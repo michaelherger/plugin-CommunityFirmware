@@ -1,3 +1,9 @@
+PLUGIN_COMMUNITY_FIRMWARE_NAME
+	DE	Community-Firmware für Touch/Radio/Controller
+	EN	Community Firmware for Touch/Radio/Controller
+	FR	Micrologiciel communautaire pour écran tactile/radio/contrôleur
+	NL	Community Firmware voor Touch/Radio/Controller
+
 PLUGIN_COMMUNITY_FIRMWARE
 	DE	Community-Firmware f&uuml;r Touch/Radio/Controller
 	EN	Community Firmware for Touch/Radio/Controller
