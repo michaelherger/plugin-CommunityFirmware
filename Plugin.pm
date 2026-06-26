@@ -9,6 +9,8 @@ use Slim::Utils::Firmware;
 use Slim::Utils::Prefs;
 use Slim::Utils::Log;
 
+use Plugins::CommunityFirmware::Crashlog;
+
 my $log = logger('player.firmware');
 
 my $DEFAULT_REPOSITORY;
@@ -58,6 +60,8 @@ sub initPlugin {
 	}, 'enable', 'beta');
 
 	preferences('server')->set('checkVersion', 1);
+
+	Plugins::CommunityFirmware::Crashlog->init();
 }
 
 1;
