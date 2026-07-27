@@ -3,7 +3,7 @@ package Plugins::CommunityFirmware::Crashlog;
 use strict;
 
 use File::Spec::Functions qw(catfile);
-use JSON::XS::VersionOneAndTwo;
+use JSON::XS qw(decode_json encode_json);
 
 use Slim::Utils::Log;
 use Slim::Utils::OSDetect;
@@ -52,7 +52,7 @@ sub handleCrashlog {
 		# get the request data (POST for JSON 1.0)
 		my $raw = $request->content() || '{}';
 		my $json;
-		eval { $json = from_json($raw) };
+		eval { $json = decode_json($raw) };
 
 		if ($@) {
 			$result = {
@@ -84,7 +84,7 @@ sub handleCrashlog {
 			my $logFile = catfile($::logdir || Slim::Utils::OSDetect::dirsFor('log'), 'firmware_crashlog_' . time() . '.json');
 			main::INFOLOG && $log->is_info && $log->info("Saving crashlog to $logFile");
 
-			File::Slurp::write_file($logFile, to_json($json));
+			File::Slurp::write_file($logFile, encode_json($json));
 		}
 	}
 
